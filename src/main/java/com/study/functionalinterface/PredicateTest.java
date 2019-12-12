@@ -1,4 +1,4 @@
-package com.study;
+package com.study.functionalinterface;
 
 import java.util.function.Predicate;
 
