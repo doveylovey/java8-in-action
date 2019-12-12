@@ -4,7 +4,7 @@
 * [原项目地址](https://github.com/java8/Java8InAction)：https://github.com/java8/Java8InAction
 * [本项目地址](https://github.com/doveylovey/java8-in-action)：https://github.com/doveylovey/java8-in-action
 
-Java8InAction
+原书章节内容
 ===========================================================================
 * Chapter 1: Java 8: why should you care?
 * Chapter 2: Passing code with behavior parameterization
