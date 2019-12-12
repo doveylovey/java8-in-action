@@ -1,17 +1,17 @@
 package com.demo.chap5;
 
 import com.demo.chap4.Dish;
-import lambdasinaction.chap4.*;
 
-import java.util.stream.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static com.demo.chap4.Dish.menu;
 
 public class NumericStreams {
-
     public static void main(String... args) {
-
         List<Integer> numbers = Arrays.asList(3, 4, 5, 1, 2);
 
         Arrays.stream(numbers.toArray()).forEach(System.out::println);
@@ -54,5 +54,4 @@ public class NumericStreams {
     public static boolean isPerfectSquare(int n) {
         return Math.sqrt(n) % 1 == 0;
     }
-
 }

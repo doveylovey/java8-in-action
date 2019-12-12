@@ -1,16 +1,14 @@
 package com.demo.chap5;
 
 import com.demo.chap4.Dish;
-import lambdasinaction.chap4.*;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
 public class Filtering {
-
     public static void main(String... args) {
-
         // Filtering with predicate
         List<Dish> vegetarianMenu =
                 Dish.menu.stream()

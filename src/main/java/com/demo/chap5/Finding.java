@@ -1,14 +1,12 @@
 package com.demo.chap5;
 
 import com.demo.chap4.Dish;
-import lambdasinaction.chap4.*;
 
-import java.util.*;
+import java.util.Optional;
 
 import static com.demo.chap4.Dish.menu;
 
 public class Finding {
-
     public static void main(String... args) {
         if (isVegetarianFriendlyMenu()) {
             System.out.println("Vegetarian friendly");
@@ -36,5 +34,4 @@ public class Finding {
     private static Optional<Dish> findVegetarianDish() {
         return menu.stream().filter(Dish::isVegetarian).findAny();
     }
-
 }

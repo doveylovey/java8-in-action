@@ -1,12 +1,12 @@
 package com.demo.appc;
 
 import com.demo.chap6.Dish;
-import lambdasinaction.chap6.*;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
-
-import java.util.*;
-import java.util.stream.*;
 
 public class StreamForkerExample {
     public static void main(String[] args) throws Exception {

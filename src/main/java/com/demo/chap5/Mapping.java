@@ -1,17 +1,15 @@
 package com.demo.chap5;
 
 import com.demo.chap4.Dish;
-import lambdasinaction.chap4.*;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
-import static java.util.stream.Collectors.toList;
 import static com.demo.chap4.Dish.menu;
+import static java.util.stream.Collectors.toList;
 
 public class Mapping {
-
     public static void main(String... args) {
-
         // map
         List<String> dishNames = menu.stream()
                 .map(Dish::getName)
