@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>manning</groupId>
-    <artifactId>lambdasinaction</artifactId>
+    <groupId>com.study</groupId>
+    <artifactId>jdk-1.8</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -79,5 +79,25 @@
                 </executions>
             </plugin>
         </plugins>
+
+        <!-- 扫描到resources下的xml等资源文件 -->
+        <!--<resources>
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>-->
     </build>
 </project>

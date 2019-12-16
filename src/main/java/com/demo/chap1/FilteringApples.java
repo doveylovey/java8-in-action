@@ -11,19 +11,19 @@ public class FilteringApples {
                 new Apple(120, "red")
         );
 
-        // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
+        // [Apple {color=green, weight=80}, Apple {color=green, weight=155}]
         List<Apple> greenApples = filterApples(inventory, FilteringApples::isGreenApple);
         System.out.println(greenApples);
 
-        // [Apple{color='green', weight=155}]
+        // [Apple {color=green, weight=155}]
         List<Apple> heavyApples = filterApples(inventory, FilteringApples::isHeavyApple);
         System.out.println(heavyApples);
 
-        // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
+        // [Apple {color=green, weight=80}, Apple {color=green, weight=155}]
         List<Apple> greenApples2 = filterApples(inventory, (Apple a) -> "green".equals(a.getColor()));
         System.out.println(greenApples2);
 
-        // [Apple{color='green', weight=155}]
+        // [Apple {color=green, weight=155}]
         List<Apple> heavyApples2 = filterApples(inventory, (Apple a) -> a.getWeight() > 150);
         System.out.println(heavyApples2);
 
@@ -97,7 +97,7 @@ public class FilteringApples {
 
         @Override
         public String toString() {
-            return "Apple {" + "color='" + color + ", weight=" + weight + '}';
+            return "Apple {color=" + color + ", weight=" + weight + "}";
         }
     }
 }

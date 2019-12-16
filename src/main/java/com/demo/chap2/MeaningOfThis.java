@@ -8,6 +8,7 @@ public class MeaningOfThis {
         Runnable r = new Runnable() {
             public final int value = 5;
 
+            @Override
             public void run() {
                 int value = 10;
                 System.out.println(this.value);
@@ -18,6 +19,6 @@ public class MeaningOfThis {
 
     public static void main(String... args) {
         MeaningOfThis m = new MeaningOfThis();
-        m.doIt(); // ???
+        m.doIt();
     }
 }
