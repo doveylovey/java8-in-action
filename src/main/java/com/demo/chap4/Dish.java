@@ -19,7 +19,7 @@ public class Dish {
             new Dish("prawns", false, 400, Dish.Type.FISH),
             new Dish("salmon", false, 450, Dish.Type.FISH)
     );
-    
+
     public Dish(String name, boolean vegetarian, int calories, Type type) {
         this.name = name;
         this.vegetarian = vegetarian;
