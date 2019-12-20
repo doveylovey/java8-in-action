@@ -4,8 +4,7 @@ import com.demo.chap4.Dish;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static java.util.stream.Collectors.toList;
+import java.util.stream.Collectors;
 
 public class Filtering {
     public static void main(String... args) {
@@ -13,8 +12,7 @@ public class Filtering {
         List<Dish> vegetarianMenu =
                 Dish.menu.stream()
                         .filter(Dish::isVegetarian)
-                        .collect(toList());
-
+                        .collect(Collectors.toList());
         vegetarianMenu.forEach(System.out::println);
 
         // Filtering unique elements
@@ -29,8 +27,7 @@ public class Filtering {
                 Dish.menu.stream()
                         .filter(d -> d.getCalories() > 300)
                         .limit(3)
-                        .collect(toList());
-
+                        .collect(Collectors.toList());
         dishesLimit3.forEach(System.out::println);
 
         // Skipping elements
@@ -38,8 +35,7 @@ public class Filtering {
                 Dish.menu.stream()
                         .filter(d -> d.getCalories() > 300)
                         .skip(2)
-                        .collect(toList());
-
+                        .collect(Collectors.toList());
         dishesSkip2.forEach(System.out::println);
     }
 }

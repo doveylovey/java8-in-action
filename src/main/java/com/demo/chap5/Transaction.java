@@ -1,7 +1,6 @@
 package com.demo.chap5;
 
 public class Transaction {
-
     private Trader trader;
     private int year;
     private int value;
@@ -24,9 +23,8 @@ public class Transaction {
         return this.value;
     }
 
+    @Override
     public String toString() {
-        return "{" + this.trader + ", " +
-                "year: " + this.year + ", " +
-                "value:" + this.value + "}";
+        return "{" + this.trader + ", " + "year: " + this.year + ", " + "value:" + this.value + "}";
     }
 }

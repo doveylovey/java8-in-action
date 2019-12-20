@@ -1,10 +1,8 @@
 package com.demo.chap4;
 
-import java.util.*;
-import java.util.stream.*;
-
-import static java.util.stream.Collectors.toList;
-
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class StreamVsCollection {
     public static void main(String... args) {

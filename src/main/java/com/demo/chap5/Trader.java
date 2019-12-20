@@ -1,7 +1,6 @@
 package com.demo.chap5;
 
 public class Trader {
-
     private String name;
     private String city;
 
@@ -22,6 +21,7 @@ public class Trader {
         this.city = newCity;
     }
 
+    @Override
     public String toString() {
         return "Trader:" + this.name + " in " + this.city;
     }

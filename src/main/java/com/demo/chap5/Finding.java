@@ -13,6 +13,7 @@ public class Finding {
         }
 
         System.out.println(isHealthyMenu());
+
         System.out.println(isHealthyMenu2());
 
         Optional<Dish> dish = findVegetarianDish();

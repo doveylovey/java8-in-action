@@ -21,7 +21,6 @@ public class PuttingIntoPractice {
                 new Transaction(alan, 2012, 950)
         );
 
-
         // Query 1: Find all transactions from year 2011 and sort them by value (small to high).
         List<Transaction> tr2011 = transactions.stream()
                 .filter(transaction -> transaction.getYear() == 2011)
@@ -30,45 +29,33 @@ public class PuttingIntoPractice {
         System.out.println(tr2011);
 
         // Query 2: What are all the unique cities where the traders work?
-        List<String> cities =
-                transactions.stream()
-                        .map(transaction -> transaction.getTrader().getCity())
-                        .distinct()
-                        .collect(toList());
+        List<String> cities = transactions.stream()
+                .map(transaction -> transaction.getTrader().getCity())
+                .distinct()
+                .collect(toList());
         System.out.println(cities);
 
         // Query 3: Find all traders from Cambridge and sort them by name.
-
-        List<Trader> traders =
-                transactions.stream()
-                        .map(Transaction::getTrader)
-                        .filter(trader -> trader.getCity().equals("Cambridge"))
-                        .distinct()
-                        .sorted(comparing(Trader::getName))
-                        .collect(toList());
+        List<Trader> traders = transactions.stream()
+                .map(Transaction::getTrader)
+                .filter(trader -> trader.getCity().equals("Cambridge"))
+                .distinct()
+                .sorted(comparing(Trader::getName))
+                .collect(toList());
         System.out.println(traders);
 
-
         // Query 4: Return a string of all traders’ names sorted alphabetically.
-
-        String traderStr =
-                transactions.stream()
-                        .map(transaction -> transaction.getTrader().getName())
-                        .distinct()
-                        .sorted()
-                        .reduce("", (n1, n2) -> n1 + n2);
+        String traderStr = transactions.stream()
+                .map(transaction -> transaction.getTrader().getName())
+                .distinct()
+                .sorted()
+                .reduce("", (n1, n2) -> n1 + n2);
         System.out.println(traderStr);
 
         // Query 5: Are there any trader based in Milan?
-
-        boolean milanBased =
-                transactions.stream()
-                        .anyMatch(transaction -> transaction.getTrader()
-                                .getCity()
-                                .equals("Milan")
-                        );
+        boolean milanBased = transactions.stream()
+                .anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
         System.out.println(milanBased);
-
 
         // Query 6: Update all transactions so that the traders from Milan are set to Cambridge.
         transactions.stream()
@@ -76,13 +63,11 @@ public class PuttingIntoPractice {
                 .filter(trader -> trader.getCity().equals("Milan"))
                 .forEach(trader -> trader.setCity("Cambridge"));
         System.out.println(transactions);
-
-
+        
         // Query 7: What's the highest value in all the transactions?
-        int highestValue =
-                transactions.stream()
-                        .map(Transaction::getValue)
-                        .reduce(0, Integer::max);
+        int highestValue = transactions.stream()
+                .map(Transaction::getValue)
+                .reduce(0, Integer::max);
         System.out.println(highestValue);
     }
 }
