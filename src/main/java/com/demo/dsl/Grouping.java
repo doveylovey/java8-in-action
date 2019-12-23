@@ -28,10 +28,11 @@ import static com.demo.chap6.Dish.menu;
 import static com.demo.dsl.Grouping.GroupingBuilder.groupOn;
 
 public class Grouping {
-
-    enum CaloricLevel {DIET, NORMAL, FAT}
-
-    ;
+    enum CaloricLevel {
+        DIET,
+        NORMAL,
+        FAT
+    }
 
     public static void main(String... args) {
         System.out.println("Dishes grouped by type and caloric level: " + groupDishedByTypeAndCaloricLevel2());
@@ -39,15 +40,17 @@ public class Grouping {
     }
 
     private static CaloricLevel getCaloricLevel(Dish dish) {
-        if (dish.getCalories() <= 400) return CaloricLevel.DIET;
-        else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
-        else return CaloricLevel.FAT;
+        if (dish.getCalories() <= 400) {
+            return CaloricLevel.DIET;
+        } else if (dish.getCalories() <= 700) {
+            return CaloricLevel.NORMAL;
+        } else {
+            return CaloricLevel.FAT;
+        }
     }
 
     private static Map<Dish.Type, Map<CaloricLevel, List<Dish>>> groupDishedByTypeAndCaloricLevel2() {
-        return menu.stream().collect(
-                twoLevelGroupingBy(Dish::getType, dish -> getCaloricLevel(dish))
-        );
+        return menu.stream().collect(twoLevelGroupingBy(Dish::getType, dish -> getCaloricLevel(dish)));
     }
 
     public static <A, B, T> Collector<T, ?, Map<A, Map<B, List<T>>>> twoLevelGroupingBy(Function<? super T, ? extends A> f1, Function<? super T, ? extends B> f2) {

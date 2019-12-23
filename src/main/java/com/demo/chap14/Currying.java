@@ -4,7 +4,6 @@ import java.util.function.DoubleUnaryOperator;
 
 
 public class Currying {
-
     public static void main(String[] args) {
         DoubleUnaryOperator convertCtoF = curriedConverter(9.0 / 5, 32);
         DoubleUnaryOperator convertUSDtoGBP = curriedConverter(0.6, 0);

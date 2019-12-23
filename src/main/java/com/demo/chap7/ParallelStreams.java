@@ -3,7 +3,6 @@ package com.demo.chap7;
 import java.util.stream.*;
 
 public class ParallelStreams {
-
     public static long iterativeSum(long n) {
         long result = 0;
         for (long i = 0; i <= n; i++) {

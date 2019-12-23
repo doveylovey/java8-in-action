@@ -23,7 +23,6 @@ import org.openjdk.jmh.annotations.Warmup;
 @Measurement(iterations = 2)
 @Warmup(iterations = 3)
 public class ParallelStreamBenchmark {
-
     private static final long N = 10_000_000L;
 
     @Benchmark

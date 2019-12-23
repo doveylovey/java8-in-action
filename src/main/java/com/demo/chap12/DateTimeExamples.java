@@ -24,8 +24,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class DateTimeExamples {
-
     private static final ThreadLocal<DateFormat> formatters = new ThreadLocal<DateFormat>() {
+        @Override
         protected DateFormat initialValue() {
             return new SimpleDateFormat("dd-MMM-yyyy");
         }
@@ -41,9 +41,7 @@ public class DateTimeExamples {
     private static void useOldDate() {
         Date date = new Date(114, 2, 18);
         System.out.println(date);
-
         System.out.println(formatters.get().format(date));
-
         Calendar calendar = Calendar.getInstance();
         calendar.set(2014, Calendar.FEBRUARY, 18);
         System.out.println(calendar);
@@ -153,5 +151,4 @@ public class DateTimeExamples {
 
         System.out.println(date.format(complexFormatter));
     }
-
 }

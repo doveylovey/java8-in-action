@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-
     private String customer;
 
     private List<Trade> trades = new ArrayList<>();

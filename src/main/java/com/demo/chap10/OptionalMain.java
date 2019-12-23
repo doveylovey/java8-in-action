@@ -5,7 +5,6 @@ import java.util.*;
 import static java.util.stream.Collectors.toSet;
 
 public class OptionalMain {
-
     public String getCarInsuranceName(Optional<Person> person) {
         return person.flatMap(Person::getCar)
                 .flatMap(Car::getInsurance)

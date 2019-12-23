@@ -3,7 +3,6 @@ package com.demo.chap11;
 import java.util.Random;
 
 public class Shop {
-
     private final String name;
     private final Random random;
 

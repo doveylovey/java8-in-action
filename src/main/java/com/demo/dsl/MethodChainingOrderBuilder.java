@@ -21,7 +21,6 @@ import com.demo.dsl.model.Stock;
 import com.demo.dsl.model.Trade;
 
 public class MethodChainingOrderBuilder {
-
     public final Order order = new Order();
 
     private MethodChainingOrderBuilder(String customer) {

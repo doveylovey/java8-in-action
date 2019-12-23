@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class BestPriceFinderMain {
-
     private static BestPriceFinder bestPriceFinder = new BestPriceFinder();
 
     public static void main(String[] args) {

@@ -4,7 +4,6 @@ import java.util.stream.LongStream;
 
 
 public class Recursion {
-
     public static void main(String[] args) {
         System.out.println(factorialIterative(5));
         System.out.println(factorialRecursive(5));
@@ -25,8 +24,7 @@ public class Recursion {
     }
 
     public static long factorialStreams(long n) {
-        return LongStream.rangeClosed(1, n)
-                .reduce(1, (long a, long b) -> a * b);
+        return LongStream.rangeClosed(1, n).reduce(1, (long a, long b) -> a * b);
     }
 
     public static long factorialTailRecursive(long n) {

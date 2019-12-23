@@ -3,7 +3,6 @@ package com.demo.chap11;
 import java.util.concurrent.Future;
 
 public class AsyncShopClient {
-
     public static void main(String[] args) {
         AsyncShop shop = new AsyncShop("BestShop");
         long start = System.nanoTime();

@@ -1,6 +1,5 @@
 package com.demo.chap8;
 
-
 abstract class OnlineBanking {
     public void processCustomer(int id) {
         Customer c = Database.getCustomerWithId(id);
@@ -8,7 +7,6 @@ abstract class OnlineBanking {
     }
 
     abstract void makeCustomerHappy(Customer c);
-
 
     // dummy Customer class
     static private class Customer {

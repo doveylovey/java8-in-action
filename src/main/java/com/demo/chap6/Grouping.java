@@ -116,8 +116,7 @@ public class Grouping {
     private static Map<Dish.Type, Set<CaloricLevel>> caloricLevelsByType() {
         return Dish.menu.stream().collect(
                 groupingBy(Dish::getType,
-                        mapping(
-                                dish -> {
+                        mapping(dish -> {
                                     if (dish.getCalories() <= 400) {
                                         return CaloricLevel.DIET;
                                     } else if (dish.getCalories() <= 700) {

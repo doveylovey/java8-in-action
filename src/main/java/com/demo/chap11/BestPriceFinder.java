@@ -10,12 +10,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class BestPriceFinder {
-
-    private final List<Shop> shops = Arrays.asList(new Shop("BestPrice"),
+    private final List<Shop> shops = Arrays.asList(
+            new Shop("BestPrice"),
             new Shop("LetsSaveBig"),
             new Shop("MyFavoriteShop"),
             new Shop("BuyItAll"),
-            new Shop("ShopEasy"));
+            new Shop("ShopEasy")
+    );
 
     private final Executor executor = Executors.newFixedThreadPool(shops.size(), new ThreadFactory() {
         @Override
@@ -43,8 +44,7 @@ public class BestPriceFinder {
     }
 
     public List<String> findPricesFuture(String product) {
-        List<CompletableFuture<String>> priceFutures = findPricesStream(product)
-                .collect(Collectors.<CompletableFuture<String>>toList());
+        List<CompletableFuture<String>> priceFutures = findPricesStream(product).collect(Collectors.<CompletableFuture<String>>toList());
 
         return priceFutures.stream()
                 .map(CompletableFuture::join)
@@ -66,5 +66,4 @@ public class BestPriceFinder {
         CompletableFuture.allOf(futures).join();
         System.out.println("All shops have now responded in " + ((System.nanoTime() - start) / 1_000_000) + " msecs");
     }
-
 }

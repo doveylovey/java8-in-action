@@ -1,7 +1,6 @@
 package com.demo.chap10;
 
 public class Insurance {
-
     private String name;
 
     public String getName() {

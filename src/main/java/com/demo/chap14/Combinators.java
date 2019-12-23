@@ -3,7 +3,6 @@ package com.demo.chap14;
 import java.util.function.Function;
 
 public class Combinators {
-
     public static void main(String[] args) {
         System.out.println(repeat(3, (Integer x) -> 2 * x).apply(10));
     }

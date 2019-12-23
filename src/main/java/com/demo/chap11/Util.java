@@ -9,7 +9,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 public class Util {
-
     private static final Random RANDOM = new Random(0);
     private static final DecimalFormat formatter = new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.US));
 
@@ -39,8 +38,6 @@ public class Util {
                         collect(Collectors.<T>toList())
         );
 */
-        return CompletableFuture.supplyAsync(() -> futures.stream().
-                map(future -> future.join()).
-                collect(Collectors.<T>toList()));
+        return CompletableFuture.supplyAsync(() -> futures.stream().map(future -> future.join()).collect(Collectors.<T>toList()));
     }
 }

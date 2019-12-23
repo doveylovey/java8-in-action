@@ -23,7 +23,6 @@ import com.demo.dsl.model.Trade;
 import java.util.function.Consumer;
 
 public class LambdaOrderBuilder {
-
     private Order order = new Order();
 
     public static Order order(Consumer<LambdaOrderBuilder> consumer) {

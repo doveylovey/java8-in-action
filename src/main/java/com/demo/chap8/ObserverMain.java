@@ -3,9 +3,7 @@ package com.demo.chap8;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ObserverMain {
-
     public static void main(String[] args) {
         Feed f = new Feed();
         f.registerObserver(new NYTimes());
@@ -13,9 +11,7 @@ public class ObserverMain {
         f.registerObserver(new LeMonde());
         f.notifyObservers("The queen said her favourite book is Java 8 in Action!");
 
-
         Feed feedLambda = new Feed();
-
         feedLambda.registerObserver((String tweet) -> {
             if (tweet != null && tweet.contains("money")) {
                 System.out.println("Breaking news in NY! " + tweet);
@@ -26,11 +22,8 @@ public class ObserverMain {
                 System.out.println("Yet another news in London... " + tweet);
             }
         });
-
         feedLambda.notifyObservers("Money money money, give me money!");
-
     }
-
 
     interface Observer {
         void inform(String tweet);
@@ -72,13 +65,14 @@ public class ObserverMain {
     static private class Feed implements Subject {
         private final List<Observer> observers = new ArrayList<>();
 
+        @Override
         public void registerObserver(Observer o) {
             this.observers.add(o);
         }
 
+        @Override
         public void notifyObservers(String tweet) {
             observers.forEach(o -> o.inform(tweet));
         }
     }
-
 }

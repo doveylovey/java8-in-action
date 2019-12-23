@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class SubsetsMain {
-
     public static void main(String[] args) {
         List<List<Integer>> subs = subsets(Arrays.asList(1, 4, 9));
         subs.forEach(System.out::println);

@@ -5,9 +5,7 @@ import java.util.concurrent.ForkJoinTask;
 import java.util.stream.LongStream;
 
 public class ForkJoinSumCalculator extends RecursiveTask<Long> {
-
     public static final long THRESHOLD = 10_000;
-
     private final long[] numbers;
     private final int start;
     private final int end;

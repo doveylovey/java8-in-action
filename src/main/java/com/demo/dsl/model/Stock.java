@@ -17,7 +17,6 @@
 package com.demo.dsl.model;
 
 public class Stock {
-
     private String symbol;
 
     private String market;

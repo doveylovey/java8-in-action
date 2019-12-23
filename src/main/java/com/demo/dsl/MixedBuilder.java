@@ -24,7 +24,6 @@ import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public class MixedBuilder {
-
     public static Order forCustomer(String customer, TradeBuilder... builders) {
         Order order = new Order();
         order.setCustomer(customer);

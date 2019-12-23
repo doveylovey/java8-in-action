@@ -8,7 +8,6 @@ import static java.util.Optional.*;
 import static org.junit.Assert.assertEquals;
 
 public class ReadPositiveIntParam {
-
     @Test
     public void testMap() {
         Properties props = new Properties();
@@ -54,5 +53,4 @@ public class ReadPositiveIntParam {
             return empty();
         }
     }
-
 }

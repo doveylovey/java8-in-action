@@ -1,6 +1,5 @@
 package com.demo.chap8;
 
-
 import java.util.*;
 
 public class Debugging {
@@ -8,7 +7,6 @@ public class Debugging {
         List<Point> points = Arrays.asList(new Point(12, 2), null);
         points.stream().map(p -> p.getX()).forEach(System.out::println);
     }
-
 
     private static class Point {
         private int x;

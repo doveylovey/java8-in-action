@@ -63,7 +63,7 @@ public class PuttingIntoPractice {
                 .filter(trader -> trader.getCity().equals("Milan"))
                 .forEach(trader -> trader.setCity("Cambridge"));
         System.out.println(transactions);
-        
+
         // Query 7: What's the highest value in all the transactions?
         int highestValue = transactions.stream()
                 .map(Transaction::getValue)

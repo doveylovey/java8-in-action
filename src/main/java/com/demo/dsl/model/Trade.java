@@ -17,7 +17,6 @@
 package com.demo.dsl.model;
 
 public class Trade {
-
     public enum Type {BUY, SELL}
 
     private Type type;

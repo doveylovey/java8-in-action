@@ -5,7 +5,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 public class AsyncShop {
-
     private final String name;
     private final Random random;
 
@@ -32,8 +31,9 @@ public class AsyncShop {
 
     private double calculatePrice(String product) {
         Util.delay();
-        if (true) throw new RuntimeException("product not available");
+        if (true) {
+            throw new RuntimeException("product not available");
+        }
         return Util.format(random.nextDouble() * product.charAt(0) + product.charAt(1));
     }
-
 }

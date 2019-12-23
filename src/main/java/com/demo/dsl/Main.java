@@ -23,7 +23,6 @@ import com.demo.dsl.model.Trade;
 import static com.demo.dsl.MethodChainingOrderBuilder.forCustomer;
 
 public class Main {
-
     public void plain() {
         Order order = new Order();
         order.setCustomer("BigBank");
@@ -58,7 +57,6 @@ public class Main {
                 .buy(80).stock("IBM").on("NYSE").at(125.00)
                 .sell(50).stock("GOOGLE").on("NASDAQ").at(375.00)
                 .end();
-
     }
 
     public void nestedFunction() {
@@ -93,5 +91,4 @@ public class Main {
             });
         });
     }
-
 }

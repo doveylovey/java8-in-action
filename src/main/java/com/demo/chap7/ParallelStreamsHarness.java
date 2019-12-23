@@ -4,7 +4,6 @@ import java.util.concurrent.*;
 import java.util.function.*;
 
 public class ParallelStreamsHarness {
-
     public static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
 
     public static void main(String[] args) {
@@ -25,7 +24,9 @@ public class ParallelStreamsHarness {
             R result = f.apply(input);
             long duration = (System.nanoTime() - start) / 1_000_000;
             System.out.println("Result: " + result);
-            if (duration < fastest) fastest = duration;
+            if (duration < fastest) {
+                fastest = duration;
+            }
         }
         return fastest;
     }

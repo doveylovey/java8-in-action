@@ -5,11 +5,7 @@ import java.util.function.*;
 import java.util.stream.*;
 
 public class WordCount {
-
-    public static final String SENTENCE =
-            " Nel   mezzo del cammin  di nostra  vita " +
-                    "mi  ritrovai in una  selva oscura" +
-                    " che la  dritta via era   smarrita ";
+    public static final String SENTENCE = " Nel   mezzo del cammin  di nostra  vita mi  ritrovai in una  selva oscura che la  dritta via era   smarrita ";
 
     public static void main(String[] args) {
         System.out.println("Found " + countWordsIteratively(SENTENCE) + " words");
@@ -35,14 +31,15 @@ public class WordCount {
         //                                    .mapToObj(SENTENCE::charAt).parallel();
         Spliterator<Character> spliterator = new WordCounterSpliterator(s);
         Stream<Character> stream = StreamSupport.stream(spliterator, true);
-
         return countWords(stream);
     }
 
     private static int countWords(Stream<Character> stream) {
-        WordCounter wordCounter = stream.reduce(new WordCounter(0, true),
+        WordCounter wordCounter = stream.reduce(
+                new WordCounter(0, true),
                 WordCounter::accumulate,
-                WordCounter::combine);
+                WordCounter::combine
+        );
         return wordCounter.getCounter();
     }
 
@@ -73,7 +70,6 @@ public class WordCount {
     }
 
     private static class WordCounterSpliterator implements Spliterator<Character> {
-
         private final String string;
         private int currentChar = 0;
 

@@ -1,13 +1,12 @@
 package com.demo.chap9;
 
 public class Diamond {
-
     public static void main(String... args) {
         new D().hello();
     }
 
     static interface A {
-        public default void hello() {
+        default void hello() {
             System.out.println("Hello from A");
         }
     }
@@ -19,6 +18,5 @@ public class Diamond {
     }
 
     static class D implements B, C {
-
     }
 }

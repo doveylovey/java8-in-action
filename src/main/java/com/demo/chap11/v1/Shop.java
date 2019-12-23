@@ -7,7 +7,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 public class Shop {
-
     private final String name;
     private final Random random;
 
@@ -37,5 +36,4 @@ public class Shop {
     public String getName() {
         return name;
     }
-
 }

@@ -1,7 +1,6 @@
 package com.demo.chap11;
 
 public class Quote {
-
     private final String shopName;
     private final double price;
     private final Discount.Code discountCode;

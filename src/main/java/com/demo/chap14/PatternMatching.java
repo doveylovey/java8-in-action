@@ -4,36 +4,33 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class PatternMatching {
-
     public static void main(String[] args) {
         simplify();
-
         Expr e = new BinOp("+", new Number(5), new BinOp("*", new Number(3), new Number(4)));
         Integer result = evaluate(e);
         System.out.println(e + " = " + result);
     }
 
     private static void simplify() {
-        TriFunction<String, Expr, Expr, Expr> binopcase =
-                (opname, left, right) -> {
-                    if ("+".equals(opname)) {
-                        if (left instanceof Number && ((Number) left).val == 0) {
-                            return right;
-                        }
-                        if (right instanceof Number && ((Number) right).val == 0) {
-                            return left;
-                        }
-                    }
-                    if ("*".equals(opname)) {
-                        if (left instanceof Number && ((Number) left).val == 1) {
-                            return right;
-                        }
-                        if (right instanceof Number && ((Number) right).val == 1) {
-                            return left;
-                        }
-                    }
-                    return new BinOp(opname, left, right);
-                };
+        TriFunction<String, Expr, Expr, Expr> binopcase = (opname, left, right) -> {
+            if ("+".equals(opname)) {
+                if (left instanceof Number && ((Number) left).val == 0) {
+                    return right;
+                }
+                if (right instanceof Number && ((Number) right).val == 0) {
+                    return left;
+                }
+            }
+            if ("*".equals(opname)) {
+                if (left instanceof Number && ((Number) left).val == 1) {
+                    return right;
+                }
+                if (right instanceof Number && ((Number) right).val == 1) {
+                    return left;
+                }
+            }
+            return new BinOp(opname, left, right);
+        };
         Function<Integer, Expr> numcase = val -> new Number(val);
         Supplier<Expr> defaultcase = () -> new Number(0);
 
@@ -49,39 +46,37 @@ public class PatternMatching {
     private static Integer evaluate(Expr e) {
         Function<Integer, Integer> numcase = val -> val;
         Supplier<Integer> defaultcase = () -> 0;
-        TriFunction<String, Expr, Expr, Integer> binopcase =
-                (opname, left, right) -> {
-                    if ("+".equals(opname)) {
-                        if (left instanceof Number && right instanceof Number) {
-                            return ((Number) left).val + ((Number) right).val;
-                        }
-                        if (right instanceof Number && left instanceof BinOp) {
-                            return ((Number) right).val + evaluate((BinOp) left);
-                        }
-                        if (left instanceof Number && right instanceof BinOp) {
-                            return ((Number) left).val + evaluate((BinOp) right);
-                        }
-                        if (left instanceof BinOp && right instanceof BinOp) {
-                            return evaluate((BinOp) left) + evaluate((BinOp) right);
-                        }
-                    }
-                    if ("*".equals(opname)) {
-                        if (left instanceof Number && right instanceof Number) {
-                            return ((Number) left).val * ((Number) right).val;
-                        }
-                        if (right instanceof Number && left instanceof BinOp) {
-                            return ((Number) right).val * evaluate((BinOp) left);
-                        }
-                        if (left instanceof Number && right instanceof BinOp) {
-                            return ((Number) left).val * evaluate((BinOp) right);
-                        }
-                        if (left instanceof BinOp && right instanceof BinOp) {
-                            return evaluate((BinOp) left) * evaluate((BinOp) right);
-                        }
-                    }
-                    return defaultcase.get();
-                };
-
+        TriFunction<String, Expr, Expr, Integer> binopcase = (opname, left, right) -> {
+            if ("+".equals(opname)) {
+                if (left instanceof Number && right instanceof Number) {
+                    return ((Number) left).val + ((Number) right).val;
+                }
+                if (right instanceof Number && left instanceof BinOp) {
+                    return ((Number) right).val + evaluate((BinOp) left);
+                }
+                if (left instanceof Number && right instanceof BinOp) {
+                    return ((Number) left).val + evaluate((BinOp) right);
+                }
+                if (left instanceof BinOp && right instanceof BinOp) {
+                    return evaluate((BinOp) left) + evaluate((BinOp) right);
+                }
+            }
+            if ("*".equals(opname)) {
+                if (left instanceof Number && right instanceof Number) {
+                    return ((Number) left).val * ((Number) right).val;
+                }
+                if (right instanceof Number && left instanceof BinOp) {
+                    return ((Number) right).val * evaluate((BinOp) left);
+                }
+                if (left instanceof Number && right instanceof BinOp) {
+                    return ((Number) left).val * evaluate((BinOp) right);
+                }
+                if (left instanceof BinOp && right instanceof BinOp) {
+                    return evaluate((BinOp) left) * evaluate((BinOp) right);
+                }
+            }
+            return defaultcase.get();
+        };
         return patternMatchExpr(e, binopcase, numcase, defaultcase);
     }
 
@@ -125,10 +120,7 @@ public class PatternMatching {
         R apply(S s, T t, U u);
     }
 
-    static <T> T patternMatchExpr(Expr e,
-                                  TriFunction<String, Expr, Expr, T> binopcase,
-                                  Function<Integer, T> numcase, Supplier<T> defaultcase) {
-
+    static <T> T patternMatchExpr(Expr e, TriFunction<String, Expr, Expr, T> binopcase, Function<Integer, T> numcase, Supplier<T> defaultcase) {
         if (e instanceof BinOp) {
             return binopcase.apply(((BinOp) e).opname, ((BinOp) e).left, ((BinOp) e).right);
         } else if (e instanceof Number) {
@@ -137,5 +129,4 @@ public class PatternMatching {
             return defaultcase.get();
         }
     }
-
 }
