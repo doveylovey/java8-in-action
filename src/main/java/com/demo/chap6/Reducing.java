@@ -4,7 +4,6 @@ import static java.util.stream.Collectors.*;
 import static com.demo.chap6.Dish.menu;
 
 public class Reducing {
-
     public static void main(String... args) {
         System.out.println("Total calories in menu: " + calculateTotalCalories());
         System.out.println("Total calories in menu: " + calculateTotalCaloriesWithMethodReference());

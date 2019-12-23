@@ -7,7 +7,6 @@ import static java.util.stream.Collectors.*;
 import static com.demo.chap6.Dish.menu;
 
 public class Partitioning {
-
     public static void main(String... args) {
         System.out.println("Dishes partitioned by vegetarian: " + partitionByVegeterian());
         System.out.println("Vegetarian Dishes by type: " + vegetarianDishesByType());
@@ -25,9 +24,9 @@ public class Partitioning {
     private static Object mostCaloricPartitionedByVegetarian() {
         return menu.stream().collect(
                 partitioningBy(Dish::isVegetarian,
-                        collectingAndThen(
-                                maxBy(comparingInt(Dish::getCalories)),
-                                Optional::get)));
+                        collectingAndThen(maxBy(comparingInt(Dish::getCalories)), Optional::get)
+                )
+        );
     }
 }
 
