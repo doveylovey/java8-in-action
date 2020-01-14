@@ -1,9 +1,5 @@
 package com.study.optional;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.Optional;
 
 /**
@@ -11,34 +7,26 @@ import java.util.Optional;
  *
  * @author administrator
  */
-public class OptionalTests {
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class User {
-        private Long id;
-        private String name;
-    }
-
+public class Optional01Tests {
     public static void main(String[] args) {
         // 测试1
-        User user01 = test01();
+        OptionalUser user01 = test01();
         System.out.println("test01()：" + user01);
         // 测试2
-        User user02 = test02();
+        OptionalUser user02 = test02();
         System.out.println("test02()：" + user02);
         // 测试3
         test03();
     }
 
-    public static Optional<User> testNotNUll() {
-        User user = new User(1L, "张三");
+    public static Optional<OptionalUser> testNotNUll() {
+        OptionalUser user = new OptionalUser(1L, "张三", null);
         // 这里 user 不能为 null
         return Optional.of(user);
     }
 
-    public static Optional<User> testNull() {
-        User user = null;
+    public static Optional<OptionalUser> testNull() {
+        OptionalUser user = null;
         // 这里 user 可以为 null
         return Optional.ofNullable(user);
     }
@@ -48,8 +36,8 @@ public class OptionalTests {
      *
      * @return
      */
-    public static User test01() {
-        Optional<User> user = testNull();
+    public static OptionalUser test01() {
+        Optional<OptionalUser> user = testNull();
         // 反例：return user.isPresent() ? user.get() : null;
         return user.orElse(null);
     }
@@ -59,17 +47,17 @@ public class OptionalTests {
      *
      * @return
      */
-    public static User test02() {
-        Optional<User> user = testNotNUll();
-        // 反例：return user.isPresent() ? user.get() : createUser();
-        return user.orElseGet(() -> createUser());
+    public static OptionalUser test02() {
+        Optional<OptionalUser> user = testNotNUll();
+        // 反例：return user.isPresent() ? user.get() : createOptionalUser();
+        return user.orElseGet(() -> createOptionalUser());
     }
 
     /**
      * 存在才对它做点什么
      */
     public static void test03() {
-        Optional<User> user = testNotNUll();
+        Optional<OptionalUser> user = testNotNUll();
         // 反例
         if (user.isPresent()) {
             System.out.println(user.get());
@@ -79,11 +67,11 @@ public class OptionalTests {
     }
 
     /**
-     * 通过函数来创建 User 对象
+     * 通过函数来创建 OptionalUser 对象
      *
      * @return
      */
-    public static User createUser() {
-        return new User(0L, "CREATE");
+    public static OptionalUser createOptionalUser() {
+        return new OptionalUser(0L, "CREATE", null);
     }
 }
