@@ -36,27 +36,9 @@ public class MyClient01 {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (outputStream != null) {
-                try {
-                    outputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (socket != null) {
-                try {
-                    socket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            CloseUtils.closeInputStream(inputStream);
+            CloseUtils.closeOutputStream(outputStream);
+            CloseUtils.closeSocket(socket);
         }
     }
 }

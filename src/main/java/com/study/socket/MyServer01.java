@@ -40,34 +40,10 @@ public class MyServer01 {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (outputStream != null) {
-                try {
-                    outputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (socket != null) {
-                try {
-                    socket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (serverSocket != null) {
-                try {
-                    serverSocket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            CloseUtils.closeOutputStream(outputStream);
+            CloseUtils.closeInputStream(inputStream);
+            CloseUtils.closeSocket(socket);
+            CloseUtils.closeServerSocket(serverSocket);
         }
     }
 }
