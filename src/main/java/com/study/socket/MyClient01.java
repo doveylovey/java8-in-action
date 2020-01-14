@@ -1,5 +1,8 @@
 package com.study.socket;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -12,6 +15,8 @@ import java.util.Scanner;
  * @author Administrator
  */
 public class MyClient01 {
+    private final static Logger logger = LoggerFactory.getLogger(MyClient01.class);
+
     public static void main(String[] args) {
         // 获取用户输入的数据
         Scanner input = new Scanner(System.in);
@@ -34,7 +39,7 @@ public class MyClient01 {
             String getData = new String(buffer, 0, len);
             System.out.println("从服务端获取的数据：" + getData);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("客户端异常！", e);
         } finally {
             CloseUtils.closeInputStream(inputStream);
             CloseUtils.closeOutputStream(outputStream);

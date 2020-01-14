@@ -17,9 +17,11 @@ public class Optional01Tests {
         System.out.println("test02()：" + user02);
         // 测试3
         test03();
+        // 测试4
+        test04();
     }
 
-    public static Optional<OptionalUser> testNotNUll() {
+    public static Optional<OptionalUser> testNotNull() {
         OptionalUser user = new OptionalUser(1L, "张三", null);
         // 这里 user 不能为 null
         return Optional.of(user);
@@ -48,16 +50,25 @@ public class Optional01Tests {
      * @return
      */
     public static OptionalUser test02() {
-        Optional<OptionalUser> user = testNotNUll();
+        Optional<OptionalUser> user = testNotNull();
         // 反例：return user.isPresent() ? user.get() : createOptionalUser();
         return user.orElseGet(() -> createOptionalUser());
     }
 
     /**
-     * 存在才对它做点什么
+     * 存在即返回，无则抛出异常
      */
     public static void test03() {
-        Optional<OptionalUser> user = testNotNUll();
+        Optional<OptionalUser> user = testNull();
+        user.orElseThrow(() -> new RuntimeException("存在即返回，无则抛出异常"));
+
+    }
+
+    /**
+     * 存在才对它做点什么
+     */
+    public static void test04() {
+        Optional<OptionalUser> user = testNull();
         // 反例
         if (user.isPresent()) {
             System.out.println(user.get());

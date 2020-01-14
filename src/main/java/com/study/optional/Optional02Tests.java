@@ -13,11 +13,52 @@ import java.util.Optional;
 public class Optional02Tests {
     public static void main(String[] args) {
         // 测试01
-        List<OptionalOrder> orderList = test01();
-        orderList.forEach(System.out::println);
+        test01();
         // 测试02
-        String s = test02();
+        test02();
+        // 测试03
+        List<OptionalOrder> orderList = test03();
+        orderList.forEach(System.out::println);
+        // 测试04
+        String s = test04();
         System.out.println(s);
+    }
+
+    /**
+     * map 若对象存在，则进行转换。jdk8 之前写法相当于 {@link #test01_1()}
+     */
+    public static void test01() {
+        OptionalUser user = null;
+        Optional<OptionalUser> optional = Optional.ofNullable(user);
+        // map 返回类型依旧为 Optional 类型
+        Optional<Long> long1 = optional.map(u -> u.getUserId());
+        System.out.println("long1：" + long1);
+        // 若使用 orElse()，只要出现 null 值，那么便转换为 1
+        Long long2 = optional.map(u -> u.getUserId()).orElse(-1L);
+        System.out.println("long2：" + long2);
+    }
+
+    public static void test01_1() {
+        OptionalUser user = null;
+        if (user != null && user.getUserId() != null) {
+            System.out.println(user.getUserId());
+        } else {
+            System.out.println(1);
+        }
+    }
+
+    /**
+     * filter 过滤条件，不符合条件则抛异常(或返回 null)
+     */
+    public static void test02() {
+        OptionalUser user1 = new OptionalUser(20L, "aa", null);
+        Optional<OptionalUser> user2 = Optional.of(user1);
+        // 中间操作，不符合条件则为 null
+        OptionalUser user3 = user2.filter(u -> "ab".equals(u.getUserName())).orElse(null);
+        System.out.println(user3);
+        // 中间操作，不符合条件则抛出异常
+        OptionalUser user4 = user2.filter(u -> "aa".equals(u.getUserName())).orElseThrow(RuntimeException::new);
+        System.out.println(user4);
     }
 
     /**
@@ -25,8 +66,8 @@ public class Optional02Tests {
      *
      * @return
      */
-    public static List<OptionalOrder> test01() {
-        Optional<OptionalUser> user = Optional.of(createOptionalUser());
+    public static List<OptionalOrder> test03() {
+        Optional<OptionalUser> user = Optional.ofNullable(createOptionalUser());
         // jdk8 之前的做法
         /*if (user.isPresent()) {
             return user.get().getOrderList();
@@ -41,8 +82,8 @@ public class Optional02Tests {
      *
      * @return
      */
-    public static String test02() {
-        Optional<OptionalUser> user = Optional.of(createOptionalUser());
+    public static String test04() {
+        Optional<OptionalUser> user = Optional.ofNullable(createOptionalUser());
         return user.map(u -> u.getUserName())
                 .map(name -> name.toLowerCase())
                 .orElse(null);

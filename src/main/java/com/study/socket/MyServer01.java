@@ -1,5 +1,8 @@
 package com.study.socket;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -13,6 +16,8 @@ import java.nio.charset.StandardCharsets;
  * @author Administrator
  */
 public class MyServer01 {
+    private final static Logger logger = LoggerFactory.getLogger(MyServer01.class);
+
     public static void main(String[] args) {
         ServerSocket serverSocket = null;
         Socket socket = null;
@@ -38,7 +43,7 @@ public class MyServer01 {
                 outputStream.write(upperCase.getBytes(StandardCharsets.UTF_8));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("服务端异常！", e);
         } finally {
             CloseUtils.closeOutputStream(outputStream);
             CloseUtils.closeInputStream(inputStream);

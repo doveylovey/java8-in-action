@@ -17,6 +17,9 @@ import java.net.Socket;
 public class CloseUtils {
     private final static Logger logger = LoggerFactory.getLogger(CloseUtils.class);
 
+    private CloseUtils() {
+    }
+
     public static void closeServerSocket(ServerSocket serverSocket) {
         try {
             serverSocket.close();
